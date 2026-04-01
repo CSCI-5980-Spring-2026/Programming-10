@@ -1,0 +1,9 @@
+build
+out
+resources
+bin
+.cache
+.idea
+.vs
+.claude
+.codex

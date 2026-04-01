@@ -1,0 +1,4 @@
+#pragma once
+constexpr const char* @VAR_NAME@ = R"glsl(
+@SHADER_CONTENT@
+)glsl";

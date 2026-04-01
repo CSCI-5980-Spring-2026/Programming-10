@@ -1,0 +1,32 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "clang-ninja",
+      "displayName": "Clang (Ninja Multi-Config)",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_RC_COMPILER": "llvm-rc",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_POLICY_VERSION_MINIMUM": "3.5",
+        "CMAKE_WARN_DEPRECATED": "FALSE"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "Debug",
+      "displayName": "Debug",
+      "configurePreset": "clang-ninja",
+      "configuration": "Debug"
+    },
+    {
+      "name": "Release",
+      "displayName": "Release",
+      "configurePreset": "clang-ninja",
+      "configuration": "Release"
+    }
+  ]
+}
