@@ -1,6 +1,6 @@
-# Programming 10: Physics System Integration
+# Programming 10/11: Physics System Integration
 
-In this live programming class, we will begin to integrate the [Bullet Physics SDK](https://github.com/bulletphysics/bullet3).
+In these live programming class, we will begin to integrate the [Bullet Physics SDK](https://github.com/bulletphysics/bullet3).  I will also demonstrate how to use agentic coding tools to create implementation plans for complex software architectures.
 
 ## Prerequisites
 
