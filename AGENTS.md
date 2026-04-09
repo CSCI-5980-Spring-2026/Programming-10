@@ -54,6 +54,19 @@ Consult the source tree for current module layout before suggesting where new co
 ## Verification Workflow
 
 - When performing a build for verification, use the Debug configuration from CMakePresets.json.
+- On Windows in this repo, do not rely on a blocking `cmake --build --preset Debug ...` shell call when running through Codex tooling. This environment has repeatedly left the agent waiting even after Ninja finished.
+- Prefer a detached build launched with PowerShell `Start-Process`, redirecting stdout/stderr to log files under `build/`, then poll the PID or inspect the log files and output binary to determine completion.
+- Recommended pattern:
+  - `Start-Process cmake -ArgumentList '--build','--preset','Debug','--target','<target>' -WorkingDirectory '<repo>' -RedirectStandardOutput 'build\\codex-build.out' -RedirectStandardError 'build\\codex-build.err' -PassThru`
+  - poll with `Get-Process -Id <pid> -ErrorAction SilentlyContinue`
+  - inspect logs with `Get-Content build\\codex-build.out -Tail 50` and `Get-Content build\\codex-build.err -Tail 50`
+- If a prior detached build was interrupted, check for orphaned `cmake` or `ninja` processes and stop them before launching another build.
+
+## Search Tools
+
+- On Windows in this repo, `rg` and `fd` are available and should be preferred for text search and file discovery.
+- Prefer `rg` over slower PowerShell text-search fallbacks when searching source files.
+- Prefer `fd` over broad recursive `Get-ChildItem` listings when discovering files by name or path pattern.
 
 ## What to Avoid
 
